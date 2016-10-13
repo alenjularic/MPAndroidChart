@@ -245,12 +245,10 @@ public abstract class AxisRenderer extends Renderer {
 
                     if (f == 0.0) // Fix for negative zero case (Where value == -0.0, and 0.0 == -0.0)
                         f = 0.0;
-                    if(i == mAxis.mEntryCount){
-                        mAxis.mEntries[i] = (float) last;
-                    }else{
-                        mAxis.mEntries[i] = (float) f;
-                    }
+
+                    mAxis.mEntries[i] = (float) f;
                 }
+                mAxis.mEntries[mAxis.mEntries.length - 1 ] = (float) last;
             }else{
                 for (f = first, i = 0; i < n; f += interval, ++i) {
 
