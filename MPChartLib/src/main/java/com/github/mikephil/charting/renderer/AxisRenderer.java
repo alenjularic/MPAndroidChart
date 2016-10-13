@@ -240,12 +240,25 @@ public abstract class AxisRenderer extends Renderer {
                 mAxis.mEntries = new float[n];
             }
 
-            for (f = first, i = 0; i < n; f += interval, ++i) {
+            if(mAxis.getSparseData()){
+                for (f = first, i = 0; i < n; f += interval, ++i) {
 
-                if (f == 0.0) // Fix for negative zero case (Where value == -0.0, and 0.0 == -0.0)
-                    f = 0.0;
+                    if (f == 0.0) // Fix for negative zero case (Where value == -0.0, and 0.0 == -0.0)
+                        f = 0.0;
+                    if(i == mAxis.mEntryCount){
+                        mAxis.mEntries[i] = (float) last;
+                    }else{
+                        mAxis.mEntries[i] = (float) f;
+                    }
+                }
+            }else{
+                for (f = first, i = 0; i < n; f += interval, ++i) {
 
-                mAxis.mEntries[i] = (float) f;
+                    if (f == 0.0) // Fix for negative zero case (Where value == -0.0, and 0.0 == -0.0)
+                        f = 0.0;
+
+                    mAxis.mEntries[i] = (float) f;
+                }
             }
         }
 
