@@ -248,7 +248,7 @@ public abstract class AxisRenderer extends Renderer {
 
                     mAxis.mEntries[i] = (float) f;
                 }
-                mAxis.mEntries[n] = (float) last;
+                mAxis.mEntries[n - 1] = (float) last;
             }else{
                 for (f = first, i = 0; i < n; f += interval, ++i) {
 
